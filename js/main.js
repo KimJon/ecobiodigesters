@@ -1,171 +1,161 @@
 /**
- * Eco Biodigesters Kenya - Interactive Logic & UI Handlers
- * Phone/WhatsApp: 0724582615 (+254 724 582 615)
+ * Eco Biodigesters Kenya - main.js
+ * Multi-page navigation, Lightbox, Calculator, and Direct WhatsApp/Call actions
+ * Phone/WhatsApp: 0724 582 615
+ * Office: Ruai Off Kangundo Road
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Sticky Navigation & Scroll Spy
-  const navbar = document.querySelector('.navbar');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section[id]');
-  const backToTopBtn = document.querySelector('.back-to-top');
-
-  window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset;
-
-    // Navbar shadow on scroll
-    if (scrollY > 60) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
-    }
-
-    // Back to top button visibility
-    if (scrollY > 400) {
-      backToTopBtn?.classList.add('visible');
-    } else {
-      backToTopBtn?.classList.remove('visible');
-    }
-
-    // Active link highlighting
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.offsetHeight;
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  // Back to top click
-  backToTopBtn?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // 2. Mobile Menu Toggle
+  // 1. Mobile Menu Toggle
   const mobileToggle = document.querySelector('.mobile-toggle');
-  const navLinksContainer = document.querySelector('.nav-links');
+  const navMenu = document.querySelector('.nav-menu');
 
-  if (mobileToggle && navLinksContainer) {
+  if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      mobileToggle.classList.toggle('active');
-      navLinksContainer.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
 
-    // Close mobile menu on link click
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileToggle.classList.remove('active');
-        navLinksContainer.classList.remove('active');
-      });
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+      }
     });
   }
 
-  // 3. Interactive Biodigester Sizing & Cost Calculator
-  const calcProperty = document.getElementById('calc-property');
+  // 2. Interactive Biodigester Sizing & Cost Calculator (For Home & Pricing pages)
   const calcUsers = document.getElementById('calc-users');
+  const calcProperty = document.getElementById('calc-property');
   const calcGrease = document.getElementById('calc-grease');
-  const calcEnzymes = document.getElementById('calc-enzymes');
-
   const resultModel = document.getElementById('result-model');
   const resultSpecs = document.getElementById('result-specs');
-  const resultEstimate = document.getElementById('result-estimate');
-  const resultWhatsappBtn = document.getElementById('calc-whatsapp-btn');
+  const resultPrice = document.getElementById('result-price');
+  const calcWhatsAppBtn = document.getElementById('calc-whatsapp-btn');
 
-  function calculateBiodigester() {
-    if (!calcProperty || !calcUsers || !resultModel) return;
+  function updateCalculator() {
+    if (!calcUsers || !resultModel) return;
 
-    const property = calcProperty.value;
     const users = parseInt(calcUsers.value, 10);
+    const property = calcProperty ? calcProperty.options[calcProperty.selectedIndex].text : 'Residential';
     const hasGrease = calcGrease ? calcGrease.checked : false;
-    const hasEnzymes = calcEnzymes ? calcEnzymes.checked : false;
 
-    let modelName = 'Eco Biodigester Compact';
-    let specs = 'Recommended for 1–8 Users | Standard 1.2m Diameter | 1-Day Setup';
-    let minPrice = 75000;
-    let maxPrice = 85000;
+    let modelName = 'Eco Compact Biodigester';
+    let specs = 'Best for 1 to 8 people • 1-Day Setup • 3 Chambers';
+    let price = 'KSh 75,000 – 85,000';
+    let minKsh = 75000;
+    let maxKsh = 85000;
 
     if (users <= 8) {
-      modelName = 'Eco Biodigester Compact (Single Home)';
-      specs = 'Engineered for up to 8 users | 3-Chamber Biological System | 1-Day Setup';
-      minPrice = 75000;
-      maxPrice = 85000;
+      modelName = 'Eco Compact Biodigester';
+      specs = 'Best for 1 to 8 people (Bungalow or Maisonette) • 1-Day Setup';
+      minKsh = 75000;
+      maxKsh = 85000;
     } else if (users <= 20) {
-      modelName = 'Eco Biodigester Standard (Family & Maisonette)';
-      specs = 'Engineered for 9–20 users | Reinforced Multi-Chamber | 1-2 Days Setup';
-      minPrice = 95000;
-      maxPrice = 115000;
-    } else if (users <= 45) {
-      modelName = 'Eco Biodigester Plus (Multi-Family / Units)';
-      specs = 'Engineered for 21–45 users | High-flow anaerobic chambers | 2 Days Setup';
-      minPrice = 135000;
-      maxPrice = 175000;
-    } else if (users <= 100) {
-      modelName = 'Eco Biodigester Commercial Max (Apartments/Hostels)';
-      specs = 'Engineered for 46–100 users | Heavy-duty dual system + French drain';
-      minPrice = 220000;
-      maxPrice = 290000;
+      modelName = 'Eco Standard Family Biodigester';
+      specs = 'Best for 9 to 20 people (Large Family or Duplex) • 1–2 Days Setup';
+      minKsh = 95000;
+      maxKsh = 115000;
+    } else if (users <= 50) {
+      modelName = 'Eco Plus Biodigester (Apartment / Flats)';
+      specs = 'Best for 21 to 50 people (Rental Flats & Hostels) • 2 Days Setup';
+      minKsh = 140000;
+      maxKsh = 180000;
     } else {
-      modelName = 'Eco Commercial Custom Estate / Institutional System';
-      specs = 'Engineered for 100+ users | High capacity multi-cell digestors';
-      minPrice = 350000;
-      maxPrice = 500000;
+      modelName = 'Eco Commercial Multi-Chamber System';
+      specs = 'Best for 50 to 150+ people (Schools, Hotels, Estates) • Custom Setup';
+      minKsh = 220000;
+      maxKsh = 350000;
     }
 
     if (hasGrease) {
-      minPrice += 18000;
-      maxPrice += 25000;
-      specs += ' + Commercial Grease Trap';
+      minKsh += 18000;
+      maxKsh += 25000;
+      specs += ' + Kitchen Grease Trap included';
     }
 
-    if (hasEnzymes) {
-      minPrice += 4000;
-      maxPrice += 6000;
-      specs += ' + Bio-Enzyme Starter Kit';
-    }
+    price = `KSh ${minKsh.toLocaleString()} – ${maxKsh.toLocaleString()}`;
 
     resultModel.textContent = modelName;
-    resultSpecs.textContent = specs;
-    resultEstimate.textContent = `KSh ${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()}`;
+    if (resultSpecs) resultSpecs.textContent = specs;
+    if (resultPrice) resultPrice.textContent = price;
 
-    // Update WhatsApp link with details
-    const message = encodeURIComponent(
-      `Hello Eco Biodigesters Kenya! I used your website calculator:\n` +
-      `- Property Type: ${calcProperty.options[calcProperty.selectedIndex].text}\n` +
-      `- Capacity: Approx ${users} users\n` +
-      `- Recommended: ${modelName}\n` +
-      `- Estimated Range: KSh ${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()}\n` +
-      `- Grease Trap: ${hasGrease ? 'Yes' : 'No'}\n` +
-      `- Starter Enzymes: ${hasEnzymes ? 'Yes' : 'No'}\n` +
-      `Kindly provide an official site visit and quote for my property.`
-    );
-    resultWhatsappBtn.href = `https://wa.me/254724582615?text=${message}`;
+    if (calcWhatsAppBtn) {
+      const msg = encodeURIComponent(
+        `Hello Eco Biodigesters (Ruai Office)!\n` +
+        `I checked your website price calculator:\n` +
+        `- Property: ${property}\n` +
+        `- People/Users: Approx ${users}\n` +
+        `- Recommended Tank: ${modelName}\n` +
+        `- Price Range: ${price}\n` +
+        `- Grease Trap: ${hasGrease ? 'Yes' : 'No'}\n` +
+        `Please give me your best price and arrange a site visit.`
+      );
+      calcWhatsAppBtn.href = `https://wa.me/254724582615?text=${msg}`;
+    }
   }
 
-  [calcProperty, calcUsers, calcGrease, calcEnzymes].forEach(elem => {
-    elem?.addEventListener('change', calculateBiodigester);
-  });
-  // Initial calculate call
-  calculateBiodigester();
+  if (calcUsers) {
+    calcUsers.addEventListener('change', updateCalculator);
+    calcProperty?.addEventListener('change', updateCalculator);
+    calcGrease?.addEventListener('change', updateCalculator);
+    updateCalculator();
+  }
 
-  // 4. Portfolio Filtering & Lightbox Modal
-  const portfolioTabs = document.querySelectorAll('.portfolio-tab');
+  // 3. Quick Booking Form (Direct to WhatsApp)
+  const quickBookingForm = document.getElementById('quick-booking-form');
+  quickBookingForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('book-name')?.value || '';
+    const phone = document.getElementById('book-phone')?.value || '';
+    const location = document.getElementById('book-location')?.value || '';
+    const type = document.getElementById('book-type')?.value || '';
+
+    const text = encodeURIComponent(
+      `Hello Eco Biodigesters!\n` +
+      `I want to book a free site visit:\n` +
+      `- Name: ${name}\n` +
+      `- Phone: ${phone}\n` +
+      `- Location: ${location}\n` +
+      `- Property Type: ${type}\n` +
+      `Please contact me.`
+    );
+    window.open(`https://wa.me/254724582615?text=${text}`, '_blank');
+    quickBookingForm.reset();
+  });
+
+  // 4. Contact Page Form (Direct to WhatsApp)
+  const contactForm = document.getElementById('contact-page-form');
+  contactForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('c-name')?.value || '';
+    const phone = document.getElementById('c-phone')?.value || '';
+    const location = document.getElementById('c-location')?.value || '';
+    const service = document.getElementById('c-service')?.value || '';
+    const message = document.getElementById('c-message')?.value || '';
+
+    const text = encodeURIComponent(
+      `Hello Eco Biodigesters (Ruai Office)!\n` +
+      `New Website Inquiry:\n` +
+      `- Name: ${name}\n` +
+      `- Phone: ${phone}\n` +
+      `- Location: ${location}\n` +
+      `- Needed: ${service}\n` +
+      `- Details: ${message}`
+    );
+    window.open(`https://wa.me/254724582615?text=${text}`, '_blank');
+    contactForm.reset();
+  });
+
+  // 5. Portfolio Filtering & Lightbox (For portfolio.html)
+  const filterBtns = document.querySelectorAll('.filter-btn');
   const galleryCards = document.querySelectorAll('.gallery-card');
 
-  portfolioTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      portfolioTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-      const filter = tab.getAttribute('data-filter');
+      const filter = btn.getAttribute('data-filter');
       galleryCards.forEach(card => {
         if (filter === 'all' || card.getAttribute('data-category') === filter) {
           card.style.display = 'block';
@@ -176,29 +166,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Lightbox implementation for 27 images
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
-  const lightboxCounter = document.getElementById('lightbox-counter');
   const lightboxClose = document.querySelector('.lightbox-close');
   const lightboxPrev = document.querySelector('.lightbox-prev');
   const lightboxNext = document.querySelector('.lightbox-next');
 
-  let activeIndex = 0;
-  const galleryItems = Array.from(galleryCards);
+  let currentImgIndex = 0;
+  const cardsArray = Array.from(galleryCards);
 
   function openLightbox(index) {
-    if (!lightboxModal || !lightboxImg) return;
-    activeIndex = index;
-    const card = galleryItems[activeIndex];
+    if (!lightboxModal || !lightboxImg || cardsArray.length === 0) return;
+    currentImgIndex = index;
+    const card = cardsArray[currentImgIndex];
     const img = card.querySelector('img');
-    const title = card.querySelector('.gallery-title')?.textContent || 'Eco Biodigester Installation';
-    const category = card.querySelector('.gallery-cat')?.textContent || 'Project';
+    const title = card.querySelector('.gallery-info')?.textContent || 'Eco Biodigester Job Done';
 
     lightboxImg.src = img.src;
-    lightboxCaption.textContent = `${title} (${category})`;
-    lightboxCounter.textContent = `Project ${activeIndex + 1} of ${galleryItems.length}`;
+    if (lightboxCaption) {
+      lightboxCaption.textContent = `${title} (${currentImgIndex + 1} of ${cardsArray.length})`;
+    }
     lightboxModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -209,114 +197,43 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  function nextLightbox() {
-    let nextIndex = activeIndex + 1;
-    if (nextIndex >= galleryItems.length) nextIndex = 0;
-    openLightbox(nextIndex);
-  }
-
-  function prevLightbox() {
-    let prevIndex = activeIndex - 1;
-    if (prevIndex < 0) prevIndex = galleryItems.length - 1;
-    openLightbox(prevIndex);
-  }
-
   galleryCards.forEach((card, idx) => {
     card.addEventListener('click', () => openLightbox(idx));
   });
 
   lightboxClose?.addEventListener('click', closeLightbox);
-  lightboxNext?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    nextLightbox();
-  });
   lightboxPrev?.addEventListener('click', (e) => {
     e.stopPropagation();
-    prevLightbox();
+    currentImgIndex = (currentImgIndex - 1 + cardsArray.length) % cardsArray.length;
+    openLightbox(currentImgIndex);
+  });
+  lightboxNext?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentImgIndex = (currentImgIndex + 1) % cardsArray.length;
+    openLightbox(currentImgIndex);
   });
 
-  // Close on outside background click
   lightboxModal?.addEventListener('click', (e) => {
-    if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {
-      closeLightbox();
-    }
+    if (e.target === lightboxModal) closeLightbox();
   });
 
-  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (!lightboxModal?.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextLightbox();
-    if (e.key === 'ArrowLeft') prevLightbox();
+    if (e.key === 'ArrowLeft') lightboxPrev?.click();
+    if (e.key === 'ArrowRight') lightboxNext?.click();
   });
 
-  // 5. FAQ Accordion
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      const faqItem = question.parentElement;
-      const isOpen = faqItem.classList.contains('active');
-
-      // Close all others
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-
+  // 6. FAQ Accordion
+  const faqRows = document.querySelectorAll('.faq-row');
+  faqRows.forEach(row => {
+    const btn = row.querySelector('.faq-btn');
+    btn?.addEventListener('click', () => {
+      const isOpen = row.classList.contains('active');
+      faqRows.forEach(r => r.classList.remove('active'));
       if (!isOpen) {
-        faqItem.classList.add('active');
+        row.classList.add('active');
       }
     });
   });
-
-  // 6. Contact Form & Hero Quick Quote Form Handlers
-  const contactForm = document.getElementById('contact-form');
-  contactForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('contact-name')?.value || '';
-    const phone = document.getElementById('contact-phone')?.value || '';
-    const location = document.getElementById('contact-location')?.value || '';
-    const service = document.getElementById('contact-service')?.value || '';
-    const message = document.getElementById('contact-message')?.value || '';
-
-    const text = encodeURIComponent(
-      `Hello Eco Biodigesters!\n` +
-      `New Website Contact Request:\n` +
-      `- Name: ${name}\n` +
-      `- Phone: ${phone}\n` +
-      `- Location: ${location}\n` +
-      `- Service Required: ${service}\n` +
-      `- Message: ${message}`
-    );
-
-    window.open(`https://wa.me/254724582615?text=${text}`, '_blank');
-    alert('Thank you! Redirecting to WhatsApp to send your inquiry directly to our engineering team.');
-    contactForm.reset();
-  });
-
-  const heroForm = document.getElementById('hero-quick-form');
-  heroForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('hero-name')?.value || '';
-    const phone = document.getElementById('hero-phone')?.value || '';
-    const type = document.getElementById('hero-type')?.value || '';
-    const location = document.getElementById('hero-location')?.value || '';
-
-    const text = encodeURIComponent(
-      `Hello Eco Biodigesters! I'd like a quick quote for my property:\n` +
-      `- Name: ${name}\n` +
-      `- Phone: ${phone}\n` +
-      `- Property Type: ${type}\n` +
-      `- Site Location: ${location}`
-    );
-
-    window.open(`https://wa.me/254724582615?text=${text}`, '_blank');
-    alert('Redirecting to WhatsApp to chat with our installation manager!');
-    heroForm.reset();
-  });
-
-  // 7. Dynamic Footer Year
-  const yearSpan = document.getElementById('current-year');
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
 });
