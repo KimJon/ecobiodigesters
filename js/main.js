@@ -40,40 +40,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasGrease = calcGrease ? calcGrease.checked : false;
 
     let modelName = 'Eco Compact Biodigester';
-    let specs = 'Best for 1 to 8 people • 1-Day Setup • 3 Chambers';
-    let price = 'KSh 75,000 – 85,000';
-    let minKsh = 75000;
-    let maxKsh = 85000;
+    let specs = 'Best for 1 to 8 people • 1–7 Days Setup • Reinforced Polystyrene Technology';
+    let price = 'KSh 120,000';
+    let minKsh = 120000;
 
     if (users <= 8) {
       modelName = 'Eco Compact Biodigester';
-      specs = 'Best for 1 to 8 people (Bungalow or Maisonette) • 1-Day Setup';
-      minKsh = 75000;
-      maxKsh = 85000;
+      specs = 'Best for 1 to 8 people (Bungalow or Maisonette) • 1–7 Days Setup • Reinforced Polystyrene';
+      minKsh = 120000;
     } else if (users <= 20) {
       modelName = 'Eco Standard Family Biodigester';
-      specs = 'Best for 9 to 20 people (Large Family or Duplex) • 1–2 Days Setup';
-      minKsh = 95000;
-      maxKsh = 115000;
-    } else if (users <= 50) {
-      modelName = 'Eco Plus Biodigester (Apartment / Flats)';
-      specs = 'Best for 21 to 50 people (Rental Flats & Hostels) • 2 Days Setup';
-      minKsh = 140000;
-      maxKsh = 180000;
+      specs = 'Best for 9 to 20 people (Large Family or Duplex) • 1–7 Days Setup • Reinforced Polystyrene';
+      minKsh = 150000;
     } else {
-      modelName = 'Eco Commercial Multi-Chamber System';
-      specs = 'Best for 50 to 150+ people (Schools, Hotels, Estates) • Custom Setup';
-      minKsh = 220000;
-      maxKsh = 350000;
+      modelName = 'Eco Plus & Commercial Biodigester';
+      specs = 'Best for 21+ people (Apartments, Rentals & Estates) • 1–7 Days Setup • Reinforced Polystyrene';
+      minKsh = 210000;
     }
 
     if (hasGrease) {
       minKsh += 18000;
-      maxKsh += 25000;
       specs += ' + Kitchen Grease Trap included';
     }
 
-    price = `KSh ${minKsh.toLocaleString()} – ${maxKsh.toLocaleString()}`;
+    price = `KSh ${minKsh.toLocaleString()}`;
 
     resultModel.textContent = modelName;
     if (resultSpecs) resultSpecs.textContent = specs;

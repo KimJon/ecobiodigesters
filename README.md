@@ -8,16 +8,29 @@
 
 ---
 
+## 💎 Specifications & Pricing
+- **Installation Timeline:** 1 to 7 working days
+- **Construction Material:** High-density Reinforced Polystyrene Technology (waterproof, earthquake resistant, 50+ year lifespan)
+- **Standard Pricing:**
+  - **Eco Compact (1–8 Users):** KSh 120,000
+  - **Eco Standard (9–20 Users):** KSh 150,000
+  - **Eco Plus / Rentals (21–50+ Users):** KSh 210,000
+- **Official Branding:** Integrated official high-resolution logo (`images/logo.png`)
+- **Direct Conversion Channels:** Call (`0724 582 615`) & WhatsApp (`+254 724 582 615`) only (no email forms)
+- **Verified Works Portfolio:** All 27 authentic company photos accurately documented with exact site descriptions
+
+---
+
 ## 📂 Multi-Page Website Structure
 
 Each page is an independent, dedicated `.html` page with clean navigation, solid standard colors, and zero gradients:
 
 1. **`index.html`** - Homepage (Hero, Problem vs Solution, Popular Systems, Proof Preview, Reviews, Site Visit Booking).
-2. **`about.html`** - About Us (Story, Why hire us, Ruai Office details, 50+ year build quality).
-3. **`products.html`** - Products & Sizes (Compact 1-8 users, Standard 9-20 users, Plus rentals, Commercial, Kitchen Grease Traps, Bio Enzymes).
+2. **`about.html`** - About Us (Story, Why hire us, Ruai Office details, 50+ year build quality, reinforced polystyrene).
+3. **`products.html`** - Products & Sizes (Compact KSh 120,000, Standard KSh 150,000, Commercial KSh 210,000, Kitchen Grease Traps, Bio Enzymes).
 4. **`how-it-works.html`** - How It Works (3-step natural biological digestion, Septic vs Biodigester comparison, exhauster cost savings math, septic tank conversions).
-5. **`portfolio.html`** - Real Jobs Done (Showcases all 27 authentic project photos with categories and full-screen lightbox).
-6. **`pricing.html`** - Pricing & Cost Calculator (Interactive tank sizer, price packages, stage payment terms).
+5. **`portfolio.html`** - Real Jobs Done (Showcases all 27 authentic project photos with truthful descriptions, categories and full-screen lightbox).
+6. **`pricing.html`** - Pricing & Cost Calculator (Interactive tank sizer, price packages: 120k, 150k, 210k, stage payment terms).
 7. **`contact.html`** - Contact Us (Ruai office location, Call 0724 582 615, WhatsApp +254 724 582 615, Google Map).
 
 ---
