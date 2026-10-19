@@ -1,245 +1,307 @@
-/**
- * Eco Biodigesters Kenya - main.js
- * Multi-page navigation, Lightbox, Calculator, and Direct WhatsApp/Call actions
- * Phone/WhatsApp: 0724 582 615
- * Office: Ruai Off Kangundo Road
- */
+/* ==========================================================================
+   Eco Biodigesters - JavaScript
+   Interactive functionality matching ecosepticventures.com
+   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Mobile Menu Toggle
-  const mobileToggle = document.querySelector('.mobile-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-        navMenu.classList.remove('active');
-      }
-    });
-  }
-
-  // 2. Interactive Biodigester Sizing & Cost Calculator (For Home & Pricing pages)
-  const calcUsers = document.getElementById('calc-users');
-  const calcProperty = document.getElementById('calc-property');
-  const calcGrease = document.getElementById('calc-grease');
-  const resultModel = document.getElementById('result-model');
-  const resultSpecs = document.getElementById('result-specs');
-  const resultPrice = document.getElementById('result-price');
-  const calcWhatsAppBtn = document.getElementById('calc-whatsapp-btn');
-
-  function updateCalculator() {
-    if (!calcUsers || !resultModel) return;
-
-    const users = parseInt(calcUsers.value, 10);
-    const property = calcProperty ? calcProperty.options[calcProperty.selectedIndex].text : 'Residential';
-    const hasGrease = calcGrease ? calcGrease.checked : false;
-
-    let modelName = 'Eco Compact Biodigester';
-    let specs = 'Best for 1 to 8 people (Bungalow or Maisonette) • 1–7 Days Setup • Reinforced Polystyrene';
-    let soakDetails = 'Standard 5ft deep volcanic ballast soak pit. 100% odourless drainage.';
-
-    if (users <= 8) {
-      modelName = 'Eco Compact Biodigester';
-      specs = 'Recommended for 1 to 8 occupants (1–4 bedroom home or bungalow). Compact footprint that fits in any yard.';
-      soakDetails = 'Reinforced polystyrene formwork + volcanic stone soak pit. Clean 1–7 day installation.';
-    } else if (users <= 20) {
-      modelName = 'Eco Standard Family Biodigester';
-      specs = 'Recommended for 9 to 20 occupants (Maisonette, townhouse, or home with SQ/guest wing).';
-      soakDetails = 'Multi-chamber reinforced polystyrene system designed for higher laundry and bathroom flow.';
-    } else {
-      modelName = 'Eco Plus Commercial Biodigester';
-      specs = 'Recommended for 21+ occupants (Rental apartments, flats, schools, churches, or commercial premises).';
-      soakDetails = 'Heavy-duty multi-chamber filtration with extended soakaway bed to handle continuous daily use.';
+    // 1. Auto Year in Footer
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
     }
 
-    if (hasGrease) {
-      specs += ' + Kitchen Grease Trap included to protect system from cooking oils.';
+    // 2. Mobile Menu Toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if (icon) {
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        // Close mobile menu when a nav link is clicked
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
     }
 
-    resultModel.textContent = modelName;
-    if (resultSpecs) resultSpecs.textContent = specs;
-    if (resultPrice) resultPrice.textContent = 'Free Site Inspection & Custom Quote';
-
-    if (calcWhatsAppBtn) {
-      const msg = encodeURIComponent(
-        `Hello Eco Biodigesters (Ruai Office)!\n` +
-        `I would like a quotation for my project:\n` +
-        `- Property Type: ${property}\n` +
-        `- Occupants / Users: Approx ${users}\n` +
-        `- Recommended System: ${modelName}\n` +
-        `- Kitchen Grease Trap: ${hasGrease ? 'Yes, please include' : 'Not needed'}\n` +
-        `Please share quotation details and advise on booking a site visit.`
-      );
-      calcWhatsAppBtn.href = `https://wa.me/254724582615?text=${msg}`;
+    // 3. Navbar Scroll Effect
+    const navbar = document.getElementById('navbar') || document.querySelector('.navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.style.padding = '8px 0';
+                navbar.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.08)';
+            } else {
+                navbar.style.padding = '12px 0';
+                navbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
+            }
+        });
     }
-  }
 
-  if (calcUsers) {
-    calcUsers.addEventListener('change', updateCalculator);
-    calcProperty?.addEventListener('change', updateCalculator);
-    calcGrease?.addEventListener('change', updateCalculator);
-    updateCalculator();
-  }
+    // 4. Scroll Animation Observer
+    const animateElements = document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .scale-in');
+    if (animateElements.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.12
+        };
 
-  // 3. Quick Booking Form (Direct to WhatsApp)
-  const quickBookingForm = document.getElementById('quick-booking-form');
-  quickBookingForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('book-name')?.value || '';
-    const phone = document.getElementById('book-phone')?.value || '';
-    const location = document.getElementById('book-location')?.value || '';
-    const type = document.getElementById('book-type')?.value || '';
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-    const text = encodeURIComponent(
-      `Hello Eco Biodigesters!\n` +
-      `I want to book a free site visit:\n` +
-      `- Name: ${name}\n` +
-      `- Phone: ${phone}\n` +
-      `- Location: ${location}\n` +
-      `- Property Type: ${type}\n` +
-      `Please contact me.`
-    );
-    window.open(`https://wa.me/254724582615?text=${text}`, '_blank');
-    quickBookingForm.reset();
-  });
+        animateElements.forEach(el => observer.observe(el));
+    }
 
-  // 4. Contact Page Form (Direct to WhatsApp)
-  const contactForm = document.getElementById('contact-page-form');
-  contactForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('c-name')?.value || '';
-    const phone = document.getElementById('c-phone')?.value || '';
-    const location = document.getElementById('c-location')?.value || '';
-    const service = document.getElementById('c-service')?.value || '';
-    const message = document.getElementById('c-message')?.value || '';
-
-    const text = encodeURIComponent(
-      `Hello Eco Biodigesters (Ruai Office)!\n` +
-      `New Website Inquiry:\n` +
-      `- Name: ${name}\n` +
-      `- Phone: ${phone}\n` +
-      `- Location: ${location}\n` +
-      `- Needed: ${service}\n` +
-      `- Details: ${message}`
-    );
-    window.open(`https://wa.me/254724582615?text=${text}`, '_blank');
-    contactForm.reset();
-  });
-
-  // 5. Portfolio Filtering & Lightbox (For portfolio.html)
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const galleryCards = document.querySelectorAll('.gallery-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-      galleryCards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
+    // 5. Active Nav Link Handler based on current URL
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const navItems = document.querySelectorAll('.nav-links a:not(.btn)');
+    navItems.forEach(item => {
+        const itemHref = item.getAttribute('href');
+        if (itemHref === currentPath || (currentPath === '' && itemHref === 'index.html')) {
+            item.classList.add('active');
         }
-      });
     });
-  });
 
-  // 5. Portfolio Slider Navigation (ecosepticventures style)
-  const projectSections = document.querySelectorAll('.project-section');
-  projectSections.forEach((section) => {
-    const track = section.querySelector('.slider-track');
-    const prevBtn = section.querySelector('.prev-btn');
-    const nextBtn = section.querySelector('.next-btn');
-
-    if (track && prevBtn && nextBtn) {
-      const scrollAmount = 325; // slide width (310) + gap (15)
-
-      nextBtn.addEventListener('click', () => {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      });
-
-      prevBtn.addEventListener('click', () => {
-        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      });
-    }
-  });
-
-  // Portfolio Lightbox (works on both .slide and .gallery-card)
-  const lightboxModal = document.getElementById('lightbox-modal');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
-  const lightboxClose = document.querySelector('.lightbox-close');
-  const lightboxPrev = document.querySelector('.lightbox-prev');
-  const lightboxNext = document.querySelector('.lightbox-next');
-
-  let currentImgIndex = 0;
-  const portfolioElements = Array.from(document.querySelectorAll('.slide, .gallery-card'));
-
-  function openLightbox(index) {
-    if (!lightboxModal || !lightboxImg || portfolioElements.length === 0) return;
-    currentImgIndex = index;
-    const item = portfolioElements[currentImgIndex];
-    const img = item.querySelector('img');
-    const title = item.querySelector('.slide-caption, .gallery-info')?.textContent || 'Eco Biodigesters Project';
-
-    lightboxImg.src = img.src;
-    if (lightboxCaption) {
-      lightboxCaption.textContent = `${title} (${currentImgIndex + 1} of ${portfolioElements.length})`;
-    }
-    lightboxModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    if (!lightboxModal) return;
-    lightboxModal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  portfolioElements.forEach((item, idx) => {
-    item.addEventListener('click', () => openLightbox(idx));
-  });
-
-  lightboxClose?.addEventListener('click', closeLightbox);
-  lightboxPrev?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentImgIndex = (currentImgIndex - 1 + portfolioElements.length) % portfolioElements.length;
-    openLightbox(currentImgIndex);
-  });
-  lightboxNext?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentImgIndex = (currentImgIndex + 1) % portfolioElements.length;
-    openLightbox(currentImgIndex);
-  });
-
-  lightboxModal?.addEventListener('click', (e) => {
-    if (e.target === lightboxModal) closeLightbox();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightboxModal?.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') lightboxPrev?.click();
-    if (e.key === 'ArrowRight') lightboxNext?.click();
-  });
-
-  // 6. FAQ Accordion
-  const faqRows = document.querySelectorAll('.faq-row');
-  faqRows.forEach(row => {
-    const btn = row.querySelector('.faq-btn');
-    btn?.addEventListener('click', () => {
-      const isOpen = row.classList.contains('active');
-      faqRows.forEach(r => r.classList.remove('active'));
-      if (!isOpen) {
-        row.classList.add('active');
-      }
+    // 6. FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(other => other.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        }
     });
-  });
+
+    // 7. Direct WhatsApp Form Submission (No Email)
+    const forms = document.querySelectorAll('.contact-form, #whatsapp-form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = (form.querySelector('[name="name"]') || {}).value || '';
+            const phone = (form.querySelector('[name="phone"]') || {}).value || '';
+            const locationInput = form.querySelector('[name="location"]');
+            const location = locationInput ? locationInput.value : '';
+            const serviceSelect = form.querySelector('[name="service"]');
+            const serviceText = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : 'General Inquiry';
+            const message = (form.querySelector('[name="message"]') || {}).value || '';
+
+            const whatsappNumber = '254724582615';
+            let text = `Hello Eco Biodigesters (Ruai Office),%0A%0AI would like to make an inquiry:%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Service:* ${encodeURIComponent(serviceText)}`;
+
+            if (location) {
+                text += `%0A*Location/County:* ${encodeURIComponent(location)}`;
+            }
+            if (message) {
+                text += `%0A*Details:* ${encodeURIComponent(message)}`;
+            }
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    });
+
+    // 8. Horizontal Slider Navigation (Exact ecosepticventures behavior)
+    const projectSections = document.querySelectorAll('.project-section');
+    projectSections.forEach(section => {
+        const track = section.querySelector('.slider-track');
+        const prevBtn = section.querySelector('.prev-btn');
+        const nextBtn = section.querySelector('.next-btn');
+
+        if (track && prevBtn && nextBtn) {
+            const scrollAmount = 315; // slide width (300) + gap (15)
+
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            // Gentle auto-slide
+            let autoSlideInterval;
+            const startAutoSlide = () => {
+                autoSlideInterval = setInterval(() => {
+                    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+                        track.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
+                }, 4500);
+            };
+
+            const stopAutoSlide = () => {
+                clearInterval(autoSlideInterval);
+            };
+
+            startAutoSlide();
+            track.addEventListener('mouseenter', stopAutoSlide);
+            track.addEventListener('mouseleave', startAutoSlide);
+            track.addEventListener('touchstart', stopAutoSlide, { passive: true });
+            track.addEventListener('touchend', () => {
+                setTimeout(startAutoSlide, 3500);
+            }, { passive: true });
+
+            prevBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 6000);
+            });
+            nextBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 6000);
+            });
+        }
+    });
+
+    // 9. Lightbox Modal for All Slides & Gallery Images
+    const lightbox = document.getElementById('lightbox-modal');
+    if (lightbox) {
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+
+        const allSlides = Array.from(document.querySelectorAll('.slide'));
+        let currentIndex = 0;
+
+        const updateLightbox = (index) => {
+            if (index < 0) index = allSlides.length - 1;
+            if (index >= allSlides.length) index = 0;
+            currentIndex = index;
+
+            const slide = allSlides[currentIndex];
+            const img = slide.querySelector('img');
+            const caption = slide.querySelector('.slide-caption');
+
+            if (img && lightboxImg) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || 'Eco Biodigesters Project Photo';
+            }
+            if (caption && lightboxCaption) {
+                lightboxCaption.textContent = caption.textContent;
+            }
+        };
+
+        allSlides.forEach((slide, idx) => {
+            slide.addEventListener('click', () => {
+                updateLightbox(idx);
+                lightbox.classList.add('active');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateLightbox(currentIndex - 1);
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateLightbox(currentIndex + 1);
+            });
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
+            if (e.key === 'ArrowRight') updateLightbox(currentIndex + 1);
+        });
+    }
+
+    // 10. System Sizing Quotation Helper (on pricing.html)
+    const propertyTypeSelect = document.getElementById('calc-type');
+    const userCountInput = document.getElementById('calc-users');
+    const calcSubmitBtn = document.getElementById('calc-submit');
+
+    if (propertyTypeSelect && userCountInput && calcSubmitBtn) {
+        const updateRecommendation = () => {
+            const users = parseInt(userCountInput.value) || 6;
+            const recTitle = document.getElementById('calc-rec-title');
+            const recDesc = document.getElementById('calc-rec-desc');
+            const recDuration = document.getElementById('calc-rec-duration');
+
+            let title = 'Eco Compact Biodigester';
+            let desc = 'Ideal for residential 1 to 4 bedroom homes with up to 8 continuous users. Built with reinforced polystyrene technology.';
+            let duration = '1 to 2 working days';
+
+            if (users >= 9 && users <= 20) {
+                title = 'Eco Standard Biodigester';
+                desc = 'Ideal for large homesteads, guest houses, and rental compounds with 9 to 20 users.';
+                duration = '2 to 3 working days';
+            } else if (users > 20) {
+                title = 'Commercial / Institutional Biodigester';
+                desc = 'Engineered for schools, apartments, factories, and hotels with 21+ occupants.';
+                duration = '3 to 7 working days';
+            }
+
+            if (recTitle) recTitle.textContent = title;
+            if (recDesc) recDesc.textContent = desc;
+            if (recDuration) recDuration.textContent = duration;
+        };
+
+        propertyTypeSelect.addEventListener('change', updateRecommendation);
+        userCountInput.addEventListener('input', updateRecommendation);
+        updateRecommendation();
+
+        calcSubmitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const propertyType = propertyTypeSelect.options[propertyTypeSelect.selectedIndex].text;
+            const users = userCountInput.value || '6';
+            const location = (document.getElementById('calc-location') || {}).value || 'Kenya';
+            const recTitle = (document.getElementById('calc-rec-title') || {}).textContent || 'Biodigester System';
+
+            const whatsappUrl = `https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20used%20your%20System%20Sizing%20Guide:%0A- Property:%20${encodeURIComponent(propertyType)}%0A- Users:%20${encodeURIComponent(users)}%0A- Location:%20${encodeURIComponent(location)}%0A- Recommended:%20${encodeURIComponent(recTitle)}%0APlease%20provide%20a%20free%20site%20visit%20and%20quotation.`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
 });

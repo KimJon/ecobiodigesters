@@ -3,343 +3,317 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get a Free Site Quotation & Sizing Guide | Eco Biodigesters Kenya (Ruai Office)</title>
-  <meta name="description" content="Get an honest biodigester quotation for your home or rentals in Kenya. Ruai Office: 0724 582 615. Free site inspection and sizing advice.">
+  <title>Get a Free Quote | Eco Biodigesters Kenya (Ruai Office)</title>
+  <meta name="description" content="Get a free site visit and customized biodigester quotation for your home, rentals, or commercial property in Kenya. No hidden fees. Call 0724 582 615.">
   <link rel="canonical" href="https://ecobiodigesters.com/pricing.html">
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="container">
-      <div class="top-bar-inner">
-        <div class="top-bar-contact">
-          <a href="tel:0724582615" class="top-bar-link">
-            <i class="fa-solid fa-phone"></i> Call: 0724 582 615
-          </a>
-          <a href="https://wa.me/254724582615" target="_blank" class="top-bar-link">
-            <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> WhatsApp: 0724 582 615
-          </a>
-          <span style="color:#94a3b8;"><i class="fa-solid fa-location-dot" style="color:#4ade80;"></i> Office: Ruai Off Kangundo Road</span>
-        </div>
-        <div>
-          <span class="top-bar-badge">Countrywide Service Across Kenya</span>
-        </div>
-      </div>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Eco Biodigesters" class="logo-img">
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="pricing.html" class="active">Get a Quote</a></li>
+        <li><a href="contact.html" class="btn btn-primary nav-btn"><i class="fas fa-calendar-check"></i> Book Site Visit</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
-  <!-- Main Navigation -->
-  <header class="navbar">
+  <!-- Page Header -->
+  <header class="page-header">
     <div class="container">
-      <div class="navbar-inner">
-        <a href="index.html" class="brand-logo">
-          <img src="images/logo.png" alt="Eco Biodigesters Logo" class="site-logo">
-        </a>
-
-        <nav class="nav-menu">
-          <a href="index.html" class="nav-item-link">Home</a>
-          <a href="about.html" class="nav-item-link">About Us</a>
-          <a href="products.html" class="nav-item-link">Products</a>
-          <a href="how-it-works.html" class="nav-item-link">How It Works</a>
-          <a href="portfolio.html" class="nav-item-link">Jobs Done (27)</a>
-          <a href="pricing.html" class="nav-item-link active">Get a Quote</a>
-          <a href="contact.html" class="nav-item-link">Contact</a>
-        </nav>
-
-        <div class="nav-actions">
-          <a href="tel:0724582615" class="btn btn-dark btn-sm">
-            <i class="fa-solid fa-phone"></i> 0724 582 615
-          </a>
-          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20a%20free%20quotation." target="_blank" class="btn btn-whatsapp btn-sm">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
-          </a>
-        </div>
-
-        <button class="mobile-toggle" aria-label="Open Navigation">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Get a Quote</span>
       </div>
+      <h1>Get a Free <span class="text-green">Site Quotation</span></h1>
+      <p>
+        Every property is unique. We conduct free site visits across Kenya to inspect your soil, assess user capacity, and give you a transparent, custom quotation with zero hidden fees.
+      </p>
     </div>
   </header>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
+  <!-- Interactive System Sizing Helper -->
+  <section class="section">
     <div class="container">
-      <h1 class="page-hero-title">Get a Tailored Biodigester Quotation</h1>
-      <p class="page-hero-subtitle">
-        Every plot, soil type, and household in Kenya is different. Tell us about your project, and our Ruai team will give you an honest, all-inclusive quotation with zero hidden fees.
-      </p>
+      <div class="service-detail-card fade-in-up" style="max-width: 950px; margin: 0 auto 50px;">
+        <div class="service-detail-content" style="width: 100%;">
+          <div class="service-badge"><i class="fas fa-calculator"></i> Sizing Helper</div>
+          <h3>Find the Right System Size for Your Plot</h3>
+          <p>
+            Select your property details below to see the recommended tank size and send your requirements directly to our supervisor for an exact quote.
+          </p>
+
+          <form id="sizing-calc-form" style="margin-top: 20px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 25px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="calc-type">Property Type</label>
+                <select id="calc-type" class="form-control">
+                  <option value="residential">Residential Home (1–4 Bedrooms)</option>
+                  <option value="large_home">Large Homestead / Rentals (9–20 Users)</option>
+                  <option value="commercial">Commercial / Apartments (21+ Users)</option>
+                  <option value="institution">School / Church / Hotel</option>
+                  <option value="septic_fix">Old Septic Tank Conversion</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="calc-users">Number of Continuous Users</label>
+                <input type="number" id="calc-users" min="1" max="500" value="6" placeholder="e.g. 6">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="calc-location">Location / County</label>
+                <input type="text" id="calc-location" placeholder="e.g. Ruai, Kitengela, Nakuru">
+              </div>
+            </div>
+
+            <div style="background: var(--bg-light); border: 2px solid var(--border-color); border-radius: 16px; padding: 25px; margin-bottom: 25px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+                <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--primary-color); letter-spacing: 0.5px;">Recommended System</span>
+                <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-dark); background: white; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-color);">
+                  <i class="fas fa-clock" style="color: var(--primary-color);"></i> <span id="calc-rec-duration">1 to 2 working days</span>
+                </span>
+              </div>
+              <h4 id="calc-rec-title" style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 8px;">Eco Compact Biodigester</h4>
+              <p id="calc-rec-desc" style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 0;">
+                Ideal for residential 1 to 4 bedroom homes with up to 8 continuous users. Built on-site with reinforced polystyrene technology.
+              </p>
+            </div>
+
+            <button type="button" id="calc-submit" class="btn btn-primary btn-lg w-100">
+              <i class="fab fa-whatsapp"></i> Request Exact Quotation on WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Sizing & Quote Assistant -->
+  <!-- 3 System Overview Cards -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Our Standard <span>System Capacities</span></h2>
+        <p>Engineered with reinforced polystyrene technology to deliver permanent, odourless performance.</p>
+      </div>
+
+      <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        
+        <!-- Package 1 -->
+        <div class="why-card scale-in" style="text-align: left; padding: 35px 30px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <span class="service-badge" style="margin-bottom: 0;"><i class="fas fa-home"></i> Residential</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary-color); background: rgba(0,166,81,0.1); padding: 4px 12px; border-radius: 20px;">1–7 Days</span>
+          </div>
+          <h3 style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 8px;">Eco Compact System</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Best for 1 to 4 bedroom homes, bungalows, or maisonettes.</p>
+          <ul class="feature-checklist">
+            <li><i class="fas fa-check-circle"></i> Sized for 1 to 8 continuous users</li>
+            <li><i class="fas fa-check-circle"></i> Reinforced polystyrene structural shell</li>
+            <li><i class="fas fa-check-circle"></i> Complete excavation & foundation base</li>
+            <li><i class="fas fa-check-circle"></i> Ballast drainage soak pit included</li>
+            <li><i class="fas fa-check-circle"></i> Free starter biological bacterial enzymes</li>
+            <li><i class="fas fa-check-circle"></i> 50+ year permanent underground lifespan</li>
+          </ul>
+          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20a%20quote%20for%20the%20Eco%20Compact%20(1-8%20users)." target="_blank" class="btn btn-primary w-100">
+            <i class="fab fa-whatsapp"></i> Get Custom Quote
+          </a>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="why-card scale-in delay-1" style="text-align: left; padding: 35px 30px; border-color: var(--primary-color); box-shadow: var(--shadow-md);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <span class="service-badge" style="margin-bottom: 0; background: var(--secondary-color); color: var(--text-dark);"><i class="fas fa-star"></i> Most Popular</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary-color); background: rgba(0,166,81,0.1); padding: 4px 12px; border-radius: 20px;">1–7 Days</span>
+          </div>
+          <h3 style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 8px;">Eco Standard System</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Best for large homesteads, rentals, and busy compounds.</p>
+          <ul class="feature-checklist">
+            <li><i class="fas fa-check-circle"></i> Sized for 9 to 20 continuous users</li>
+            <li><i class="fas fa-check-circle"></i> Twin biological treatment chambers</li>
+            <li><i class="fas fa-check-circle"></i> Heavy-duty reinforced polystyrene panels</li>
+            <li><i class="fas fa-check-circle"></i> High-volume ballast drainage soak pit</li>
+            <li><i class="fas fa-check-circle"></i> Complete PVC connecting lines & T-baffles</li>
+            <li><i class="fas fa-check-circle"></i> Flush-level heavy duty inspection lids</li>
+          </ul>
+          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20a%20quote%20for%20the%20Eco%20Standard%20(9-20%20users)." target="_blank" class="btn btn-primary w-100">
+            <i class="fab fa-whatsapp"></i> Get Custom Quote
+          </a>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="why-card scale-in delay-2" style="text-align: left; padding: 35px 30px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <span class="service-badge" style="margin-bottom: 0;"><i class="fas fa-building"></i> Commercial</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary-color); background: rgba(0,166,81,0.1); padding: 4px 12px; border-radius: 20px;">3–7 Days</span>
+          </div>
+          <h3 style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 8px;">Commercial & Apartments</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Custom-engineered for apartments, schools, hotels & estates.</p>
+          <ul class="feature-checklist">
+            <li><i class="fas fa-check-circle"></i> Sized for 21 to 500+ daily occupants</li>
+            <li><i class="fas fa-check-circle"></i> Multi-cell continuous biological digestion</li>
+            <li><i class="fas fa-check-circle"></i> Double-reinforced polystyrene & masonry walls</li>
+            <li><i class="fas fa-check-circle"></i> Engineered French drain soakaway field</li>
+            <li><i class="fas fa-check-circle"></i> Compliant with NEMA public health standards</li>
+            <li><i class="fas fa-check-circle"></i> Saves property owners massive exhauster costs</li>
+          </ul>
+          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20a%20quote%20for%20a%20Commercial/Apartment%20system." target="_blank" class="btn btn-primary w-100">
+            <i class="fab fa-whatsapp"></i> Get Custom Quote
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- What Determines Your Exact Quotation? -->
   <section class="section">
     <div class="container">
-      <div class="calc-container">
-        <!-- Form Options -->
+      <div class="section-header text-center">
+        <h2 class="section-title">What Determines Your <span>Site Quotation?</span></h2>
+        <p>Because every plot in Kenya has different soil and layout, we tailor each quote fairly based on real site variables.</p>
+      </div>
+
+      <div class="why-us-grid">
+        <div class="why-card scale-in">
+          <div class="why-icon"><i class="fas fa-mountain"></i></div>
+          <h3>Soil & Terrain</h3>
+          <p>Black cotton soil (Ruai, Joska) requires larger ballast soak pits; rocky ground (Kitengela) requires compressor breaker tools.</p>
+        </div>
+
+        <div class="why-card scale-in delay-1">
+          <div class="why-icon"><i class="fas fa-users"></i></div>
+          <h3>Occupancy & Load</h3>
+          <p>A single family home needs a compact tank, while multi-door rental units or schools require dual or triple cell capacity.</p>
+        </div>
+
+        <div class="why-card scale-in delay-2">
+          <div class="why-icon"><i class="fas fa-ruler-combined"></i></div>
+          <h3>Plumbing Distance & Fall</h3>
+          <p>Distance from your toilet downpipes to the biodigester, and from the biodigester to the soakaway pit.</p>
+        </div>
+
+        <div class="why-card scale-in delay-3">
+          <div class="why-icon"><i class="fas fa-truck-moving"></i></div>
+          <h3>Location Across Kenya</h3>
+          <p>We serve all 47 counties. We bring our experienced fundis and materials directly to your site, near or far.</p>
+        </div>
+
+        <div class="why-card scale-in delay-4">
+          <div class="why-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Zero Hidden Charges</h3>
+          <p>Our quotations are all-inclusive: materials, excavation, reinforced polystyrene, piping, ballast, and enzymes.</p>
+        </div>
+
+        <div class="why-card scale-in">
+          <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Lifetime Value</h3>
+          <p>A permanent one-time investment that completely frees you from recurring exhauster bills for the next 50+ years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Mini CTA Bar -->
+  <section class="mini-cta-bar">
+    <div class="container">
+      <div class="mini-cta-content">
         <div>
-          <span class="tag-badge">Step 1: Your Property Details</span>
-          <h2 style="font-size:1.6rem; font-weight:800; color:var(--text-dark); margin-bottom:0.75rem;">System Sizing Assistant</h2>
-          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1.5rem;">
-            Select your building details below to find the ideal tank capacity for your property:
-          </p>
-
-          <div class="form-group">
-            <label class="form-label" for="calc-property">Property Type</label>
-            <select id="calc-property" class="form-select">
-              <option value="residential">Single Family Home / Bungalow (1-4 Bedroom)</option>
-              <option value="maisonette">Maisonette / Villa</option>
-              <option value="apartment">Rental Apartments / Flats</option>
-              <option value="school">School / College / Church</option>
-              <option value="hotel">Hotel / Restaurant / Lodge</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="calc-users">Number of Occupants / Users</label>
-            <select id="calc-users" class="form-select">
-              <option value="6">1 to 8 People (Standard Home)</option>
-              <option value="15">9 to 20 People (Large Family)</option>
-              <option value="35">21 to 50 People (Apartments / Rentals)</option>
-              <option value="80">50 to 150+ People (Commercial / School)</option>
-            </select>
-          </div>
-
-          <div style="margin-top:1.25rem;">
-            <label style="display:flex; align-items:center; gap:0.6rem; font-size:0.9rem; font-weight:600; color:var(--text-dark); cursor:pointer;">
-              <input type="checkbox" id="calc-grease" style="width:18px; height:18px; accent-color:var(--primary);">
-              Include Kitchen Grease Trap (Recommended for rental flats & commercial kitchens)
-            </label>
-          </div>
+          <h3>Book Your Free Site Inspection Today</h3>
+          <p>Call or WhatsApp 0724 582 615 to schedule a visit by our senior supervisor.</p>
         </div>
-
-        <!-- Result Box -->
-        <div class="calc-result-box">
-          <span style="font-size:0.78rem; font-weight:700; text-transform:uppercase; color:#4ade80; display:block; margin-bottom:0.35rem;">
-            Recommended Solution:
-          </span>
-          <h3 id="result-model" style="font-size:1.5rem; font-weight:800; color:#ffffff; margin-bottom:0.4rem;">
-            Eco Compact Biodigester
-          </h3>
-          <p id="result-specs" style="font-size:0.88rem; color:#cbd5e1; margin-bottom:1.25rem;">
-            Recommended for 1 to 8 occupants (1–4 bedroom home or bungalow). Compact footprint that fits in any yard.
-          </p>
-
-          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:var(--radius-sm); padding:1.25rem; margin-bottom:1.5rem;">
-            <span style="font-size:0.78rem; text-transform:uppercase; color:#94a3b8; display:block;">Quotation Status:</span>
-            <div class="calc-price-display" id="result-price" style="font-size:1.35rem;">Free Site Inspection & Custom Quote</div>
-            <span style="font-size:0.8rem; color:#94a3b8;">*Includes reinforced polystyrene materials, stone ballast soak pit, and 1–7 days installation.</span>
-          </div>
-
-          <a href="https://wa.me/254724582615" id="calc-whatsapp-btn" target="_blank" class="btn btn-whatsapp btn-lg" style="width:100%;">
-            <i class="fa-brands fa-whatsapp"></i> Get Custom Quote on WhatsApp
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="tel:0724582615" class="btn btn-primary btn-lg"><i class="fas fa-phone-alt"></i> Call 0724 582 615</a>
+          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20to%20book%20a%20free%20site%20visit%20for%20a%20quote." target="_blank" class="btn btn-secondary btn-lg">
+            <i class="fab fa-whatsapp"></i> Book Site Visit on WhatsApp
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Clear Package Comparison Cards -->
-  <!-- Standard Packages Overview -->
-  <section class="section section-light">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag-badge">Our Packages</span>
-        <h2 class="section-title">Standard Installation Packages</h2>
-        <p class="section-subtitle">
-          Every installation is built on-site using high-density reinforced polystyrene formwork, high-tensile wire mesh, clean volcanic ballast soak pit, inspection lids, and starter bio-enzymes.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <!-- Compact -->
-        <div class="card" style="text-align:center;">
-          <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-dark); margin-bottom:0.25rem;">Eco Compact</h3>
-          <p style="font-size:0.85rem; color:var(--primary); font-weight:700; text-transform:uppercase; margin-bottom:1rem;">1 to 8 Occupants</p>
-          <div style="font-size:1.4rem; font-weight:800; color:var(--text-dark); margin-bottom:0.25rem;">Custom Site Quote</div>
-          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.5rem;">For single-family homes & retirement bungalows</p>
-          <ul style="text-align:left; font-size:0.9rem; margin-bottom:1.75rem;">
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Ideal for 1–4 bedroom homes & SQs</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> 1 to 7 working days completion</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Reinforced polystyrene cylindrical tank</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Volcanic ballast stone soakaway pit</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> 5-Year workmanship guarantee</li>
-          </ul>
-          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20a%20quote%20for%20the%20Eco%20Compact%20Package%20(1-8%20People)." target="_blank" class="btn btn-whatsapp" style="width:100%;">
-            <i class="fa-brands fa-whatsapp"></i> Request Compact Quote
-          </a>
-        </div>
-
-        <!-- Standard (Highlighted) -->
-        <div class="card" style="text-align:center; border:2px solid var(--primary); position:relative;">
-          <span style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--primary); color:#ffffff; font-size:0.75rem; font-weight:800; text-transform:uppercase; padding:0.2rem 0.75rem; border-radius:var(--radius-full);">
-            Most Requested
-          </span>
-          <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-dark); margin-bottom:0.25rem;">Eco Standard</h3>
-          <p style="font-size:0.85rem; color:var(--primary); font-weight:700; text-transform:uppercase; margin-bottom:1rem;">9 to 20 Occupants</p>
-          <div style="font-size:1.4rem; font-weight:800; color:var(--text-dark); margin-bottom:0.25rem;">Custom Site Quote</div>
-          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.5rem;">For large families, townhouses & maisonettes</p>
-          <ul style="text-align:left; font-size:0.9rem; margin-bottom:1.75rem;">
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Multi-bathroom homes, duplexes & villas</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> 1 to 7 working days completion</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Reinforced polystyrene multi-chamber tank</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Free starter bio-enzymes supply</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> High water-flow absorption capacity</li>
-          </ul>
-          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20a%20quote%20for%20the%20Eco%20Standard%20Package%20(9-20%20People)." target="_blank" class="btn btn-whatsapp" style="width:100%;">
-            <i class="fa-brands fa-whatsapp"></i> Request Standard Quote
-          </a>
-        </div>
-
-        <!-- Plus / Rentals -->
-        <div class="card" style="text-align:center;">
-          <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-dark); margin-bottom:0.25rem;">Commercial & Rentals</h3>
-          <p style="font-size:0.85rem; color:var(--primary); font-weight:700; text-transform:uppercase; margin-bottom:1rem;">21 to 50+ Occupants</p>
-          <div style="font-size:1.4rem; font-weight:800; color:var(--text-dark); margin-bottom:0.25rem;">Custom Site Quote</div>
-          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.5rem;">For rental apartments, schools & lodges</p>
-          <ul style="text-align:left; font-size:0.9rem; margin-bottom:1.75rem;">
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Multi-unit residential flats & bedsitters</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> 1 to 7 working days completion</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Heavy-duty multi-chamber baffle filtration</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Dual inspection access covers</li>
-            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-check" style="color:var(--primary); margin-right:0.4rem;"></i> Solves tenant sewage complaints permanently</li>
-          </ul>
-          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20would%20like%20a%20quote%20for%20a%20Commercial/Rentals%20Biodigester." target="_blank" class="btn btn-whatsapp" style="width:100%;">
-            <i class="fa-brands fa-whatsapp"></i> Request Commercial Quote
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How Quotations Work in Real Kenyan Construction -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag-badge">Honest & Fair Pricing</span>
-        <h2 class="section-title">What Determines Your Exact Quotation?</h2>
-        <p class="section-subtitle">
-          Unlike sales companies who give you random numbers online, we calculate an honest price based on your plot's exact reality:
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div style="font-size:2rem; color:var(--primary); margin-bottom:1rem;"><i class="fa-solid fa-mound"></i></div>
-          <h4 style="font-size:1.15rem; font-weight:800; color:var(--text-dark); margin-bottom:0.5rem;">Soil & Ground Conditions</h4>
-          <p style="font-size:0.9rem; color:var(--text-body);">
-            Red loamy soil drains water naturally. Black cotton soil (common in Ruai, Joska, and Kamakis) or hard bedrock (Kitengela, Athi River) requires specialized soakaway sizing or a French drain bed.
-          </p>
-        </div>
-
-        <div class="card">
-          <div style="font-size:2rem; color:var(--primary); margin-bottom:1rem;"><i class="fa-solid fa-users"></i></div>
-          <h4 style="font-size:1.15rem; font-weight:800; color:var(--text-dark); margin-bottom:0.5rem;">Occupancy & Water Volume</h4>
-          <p style="font-size:0.9rem; color:var(--text-body);">
-            A 3-bedroom retirement home produces very different daily wastewater compared to a 16-door bedsitter apartment block. We size the chamber volume to guarantee it never overflows.
-          </p>
-        </div>
-
-        <div class="card">
-          <div style="font-size:2rem; color:var(--primary); margin-bottom:1rem;"><i class="fa-solid fa-location-dot"></i></div>
-          <h4 style="font-size:1.15rem; font-weight:800; color:var(--text-dark); margin-bottom:0.5rem;">Site Location Across Kenya</h4>
-          <p style="font-size:0.9rem; color:var(--text-body);">
-            From our Ruai base along Kangundo Road, we deliver materials and deploy skilled fundis across Nairobi, Kiambu, Machakos, Kajiado, Nakuru, and all 47 counties countrywide.
-          </p>
-        </div>
-      </div>
-
-      <div style="text-align:center; margin-top:3rem;">
-        <p style="font-size:1.05rem; font-weight:700; color:var(--text-dark); margin-bottom:1rem;">
-          Want to discuss your plot directly with our Ruai installation supervisor?
-        </p>
-        <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
-          <a href="tel:0724582615" class="btn btn-primary btn-lg"><i class="fa-solid fa-phone"></i> Call 0724 582 615</a>
-          <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20have%20questions%20about%20my%20plot%20and%20quotation." target="_blank" class="btn btn-whatsapp btn-lg"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clean Footer (No Emails, Only Call and WhatsApp) -->
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer id="footer" class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col">
-          <img src="images/logo.png" alt="Eco Biodigesters Logo" class="footer-logo">
-          <p>
-            Kenya's trusted choice for clean, modern, odour-free biodigesters built with reinforced polystyrene technology. Never pay for exhauster trucks again.
-          </p>
-          <p>
-            <strong style="color:#ffffff;">Physical Office:</strong><br>
-            Ruai Off Kangundo Road, Nairobi, Kenya
-          </p>
+        <div class="footer-brand">
+          <a href="index.html" class="logo footer-logo">
+            <img src="images/logo.png" alt="Eco Biodigesters" class="footer-logo-img">
+          </a>
+          <p class="footer-desc">Providing quality waste management, reinforced polystyrene biodigesters, grease traps, and plumbing services for residential homes and commercial buildings across Kenya.</p>
+          <div class="social-links">
+            <a href="https://wa.me/254724582615" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="tel:0724582615" title="Call Us"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://www.tiktok.com/@ecobiodigesters" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
         </div>
 
-        <div class="footer-col">
-          <h5>Quick Pages</h5>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="products.html">Our Products</a></li>
+            <li><a href="portfolio.html">Portfolio (27 Photos)</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="how-it-works.html">How It Works</a></li>
-            <li><a href="portfolio.html">Jobs Done (27 Photos)</a></li>
+            <li><a href="about.html">About Us</a></li>
             <li><a href="pricing.html">Get a Quote</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h5>Our Systems</h5>
+        <div class="footer-contact">
+          <h3>Contact Info</h3>
           <ul>
-            <li><a href="products.html">Eco Compact (1–8 Users)</a></li>
-            <li><a href="products.html">Eco Standard (9–20 Users)</a></li>
-            <li><a href="products.html">Commercial & Apartments (21+ Users)</a></li>
-            <li><a href="products.html">Kitchen Grease Traps</a></li>
-            <li><a href="products.html">Bio-Enzyme Bacteria</a></li>
-            <li><a href="how-it-works.html">Fixing Old Septic Tanks</a></li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <span><a href="tel:0724582615">0724 582 615</a></span>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <span><a href="https://wa.me/254724582615" target="_blank">+254 724 582 615</a></span>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Ruai Off Kangundo Road, Nairobi, Kenya</span>
+            </li>
+            <li>
+              <i class="fas fa-truck"></i>
+              <span>Countrywide Service Across All 47 Counties</span>
+            </li>
           </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Call or WhatsApp Us</h5>
-          <p>
-            <i class="fa-solid fa-phone" style="color:#4ade80;"></i>
-            <a href="tel:0724582615" style="color:#ffffff; font-weight:700; font-size:1.1rem; margin-left:0.4rem;">0724 582 615</a>
-          </p>
-          <p>
-            <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i>
-            <a href="https://wa.me/254724582615" target="_blank" style="color:#ffffff; font-weight:700; font-size:1.1rem; margin-left:0.4rem;">+254 724 582 615</a>
-          </p>
-          <p style="font-size:0.85rem; color:#94a3b8; margin-top:0.75rem;">
-            Serving Nairobi, Kiambu, Machakos, Kajiado, Nakuru, Eldoret, Mombasa, and all counties across Kenya.
-          </p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 <strong>Eco Biodigesters</strong>. Custom Domain: ecobiodigesters.com</div>
-        <div>Office: Ruai Off Kangundo Road | Tel: 0724 582 615</div>
+        <p>&copy; <span id="year"></span> Eco Biodigesters. All Rights Reserved. Custom Domain: ecobiodigesters.com</p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Sticky Action Buttons -->
-  <div class="floating-actions">
-    <a href="tel:0724582615" class="float-btn float-call" aria-label="Call Now">
-      <i class="fa-solid fa-phone"></i>
-    </a>
-    <a href="https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%20I%20want%20information%20on%20installing%20a%20biodigester." target="_blank" class="float-btn float-whatsapp" aria-label="WhatsApp Us">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-  </div>
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/254724582615" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <script src="js/main.js"></script>
 </body>
