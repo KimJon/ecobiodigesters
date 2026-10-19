@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 7. Direct WhatsApp Form Submission (No Email - Executive Phrasing)
+    // 7. Direct WhatsApp Form Submission (No Email - Simplified Executive Style)
     const forms = document.querySelectorAll('.contact-form, #whatsapp-form');
     forms.forEach(form => {
         form.addEventListener('submit', function (e) {
@@ -115,17 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const locationInput = form.querySelector('[name="location"]');
             const location = locationInput ? locationInput.value : '';
             const serviceSelect = form.querySelector('[name="service"]');
-            const serviceText = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : 'Technical Consultation';
+            const serviceText = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : 'Biodigester Consultation';
             const message = (form.querySelector('[name="message"]') || {}).value || '';
 
             const whatsappNumber = '254724582615';
-            let text = `Hello Eco Biodigesters Engineering Team,%0A%0AI would like to request a technical consultation / site survey:%0A%0A*Client/Organization:* ${encodeURIComponent(name)}%0A*Direct Telephone:* ${encodeURIComponent(phone)}%0A*Required Scope:* ${encodeURIComponent(serviceText)}`;
+            let text = `Hello Eco Biodigesters,%0A%0AI would like to book a site visit / request a quote:%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Service:* ${encodeURIComponent(serviceText)}`;
 
             if (location) {
-                text += `%0A*Project Location:* ${encodeURIComponent(location)}`;
+                text += `%0A*Location:* ${encodeURIComponent(location)}`;
             }
             if (message) {
-                text += `%0A*Project Overview:* ${encodeURIComponent(message)}`;
+                text += `%0A*Details:* ${encodeURIComponent(message)}`;
             }
 
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${text}`;
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 10. System Sizing & Hydraulic Load Helper (on pricing.html)
+    // 10. System Sizing & Capacity Helper (on pricing.html)
     const propertyTypeSelect = document.getElementById('calc-type');
     const userCountInput = document.getElementById('calc-users');
     const calcSubmitBtn = document.getElementById('calc-submit');
@@ -271,17 +271,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const recDesc = document.getElementById('calc-rec-desc');
             const recDuration = document.getElementById('calc-rec-duration');
 
-            let title = 'Eco Compact Bio-Reactor';
-            let desc = 'Engineered for private residential 1 to 4 bedroom residences with up to 8 continuous occupants. Built with reinforced expanded polystyrene (EPS) composite structural technology.';
-            let duration = '1 to 2 working days';
+            let title = 'Eco Compact Biodigester';
+            let desc = 'Ideal for private 1 to 4 bedroom homes with up to 8 occupants. Built with reinforced polystyrene technology.';
+            let duration = '1 to 7 working days';
 
             if (users >= 9 && users <= 20) {
-                title = 'Eco Standard Multi-Chamber Bio-Reactor';
-                desc = 'Engineered for multi-unit residential developments, large homesteads, and rental compounds with 9 to 20 continuous occupants.';
-                duration = '2 to 3 working days';
+                title = 'Eco Standard Biodigester';
+                desc = 'Ideal for multi-unit rental properties, large homesteads, and guest houses with 9 to 20 occupants.';
+                duration = '1 to 7 working days';
             } else if (users > 20) {
-                title = 'Commercial / Institutional Multi-Cell Plant';
-                desc = 'Engineered for high-density institutions, apartment complexes, educational facilities, and hotels with 21 to 500+ daily occupants.';
+                title = 'Commercial Biodigester Plant';
+                desc = 'Custom-built for apartment complexes, schools, hospitals, and commercial facilities with 21 to 500+ daily occupants.';
                 duration = '3 to 7 working days';
             }
 
@@ -299,9 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const propertyType = propertyTypeSelect.options[propertyTypeSelect.selectedIndex].text;
             const users = userCountInput.value || '6';
             const location = (document.getElementById('calc-location') || {}).value || 'Kenya';
-            const recTitle = (document.getElementById('calc-rec-title') || {}).textContent || 'Bio-Reactor System';
+            const recTitle = (document.getElementById('calc-rec-title') || {}).textContent || 'Biodigester System';
 
-            const whatsappUrl = `https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters%20Engineering%20Desk,%0A%0AI%20used%20your%20System%20Sizing%20&%20Feasibility%20Guide%20for%20project%20planning:%0A- Facility%20Classification:%20${encodeURIComponent(propertyType)}%0A- Continuous%20Occupancy%20Load:%20${encodeURIComponent(users)}%20Persons%0A- Project%20Location:%20${encodeURIComponent(location)}%0A- Recommended%20Specification:%20${encodeURIComponent(recTitle)}%0APlease%20contact%20me%20to%20arrange%20a%20technical%20site%20survey%20and%20provide%20a%20formal%20project%20proposal.`;
+            const whatsappUrl = `https://wa.me/254724582615?text=Hello%20Eco%20Biodigesters,%0A%0AI%20checked%20your%20System%20Sizing%20Guide%20on%20the%20website:%0A- Property%20Type:%20${encodeURIComponent(propertyType)}%0A- Number%20of%20Users:%20${encodeURIComponent(users)}%0A- Location:%20${encodeURIComponent(location)}%0A- Recommended%20System:%20${encodeURIComponent(recTitle)}%0APlease%20provide%20a%20quote%20and%20arrange%20a%20free%20site%20visit.`;
             window.open(whatsappUrl, '_blank');
         });
     }
