@@ -40,45 +40,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasGrease = calcGrease ? calcGrease.checked : false;
 
     let modelName = 'Eco Compact Biodigester';
-    let specs = 'Best for 1 to 8 people • 1–7 Days Setup • Reinforced Polystyrene Technology';
-    let price = 'KSh 120,000';
-    let minKsh = 120000;
+    let specs = 'Best for 1 to 8 people (Bungalow or Maisonette) • 1–7 Days Setup • Reinforced Polystyrene';
+    let soakDetails = 'Standard 5ft deep volcanic ballast soak pit. 100% odourless drainage.';
 
     if (users <= 8) {
       modelName = 'Eco Compact Biodigester';
-      specs = 'Best for 1 to 8 people (Bungalow or Maisonette) • 1–7 Days Setup • Reinforced Polystyrene';
-      minKsh = 120000;
+      specs = 'Recommended for 1 to 8 occupants (1–4 bedroom home or bungalow). Compact footprint that fits in any yard.';
+      soakDetails = 'Reinforced polystyrene formwork + volcanic stone soak pit. Clean 1–7 day installation.';
     } else if (users <= 20) {
       modelName = 'Eco Standard Family Biodigester';
-      specs = 'Best for 9 to 20 people (Large Family or Duplex) • 1–7 Days Setup • Reinforced Polystyrene';
-      minKsh = 150000;
+      specs = 'Recommended for 9 to 20 occupants (Maisonette, townhouse, or home with SQ/guest wing).';
+      soakDetails = 'Multi-chamber reinforced polystyrene system designed for higher laundry and bathroom flow.';
     } else {
-      modelName = 'Eco Plus & Commercial Biodigester';
-      specs = 'Best for 21+ people (Apartments, Rentals & Estates) • 1–7 Days Setup • Reinforced Polystyrene';
-      minKsh = 210000;
+      modelName = 'Eco Plus Commercial Biodigester';
+      specs = 'Recommended for 21+ occupants (Rental apartments, flats, schools, churches, or commercial premises).';
+      soakDetails = 'Heavy-duty multi-chamber filtration with extended soakaway bed to handle continuous daily use.';
     }
 
     if (hasGrease) {
-      minKsh += 18000;
-      specs += ' + Kitchen Grease Trap included';
+      specs += ' + Kitchen Grease Trap included to protect system from cooking oils.';
     }
-
-    price = `KSh ${minKsh.toLocaleString()}`;
 
     resultModel.textContent = modelName;
     if (resultSpecs) resultSpecs.textContent = specs;
-    if (resultPrice) resultPrice.textContent = price;
+    if (resultPrice) resultPrice.textContent = 'Free Site Inspection & Custom Quote';
 
     if (calcWhatsAppBtn) {
       const msg = encodeURIComponent(
         `Hello Eco Biodigesters (Ruai Office)!\n` +
-        `I checked your website price calculator:\n` +
-        `- Property: ${property}\n` +
-        `- People/Users: Approx ${users}\n` +
-        `- Recommended Tank: ${modelName}\n` +
-        `- Price Range: ${price}\n` +
-        `- Grease Trap: ${hasGrease ? 'Yes' : 'No'}\n` +
-        `Please give me your best price and arrange a site visit.`
+        `I would like a quotation for my project:\n` +
+        `- Property Type: ${property}\n` +
+        `- Occupants / Users: Approx ${users}\n` +
+        `- Recommended System: ${modelName}\n` +
+        `- Kitchen Grease Trap: ${hasGrease ? 'Yes, please include' : 'Not needed'}\n` +
+        `Please share quotation details and advise on booking a site visit.`
       );
       calcWhatsAppBtn.href = `https://wa.me/254724582615?text=${msg}`;
     }
@@ -156,6 +151,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 5. Portfolio Slider Navigation (ecosepticventures style)
+  const projectSections = document.querySelectorAll('.project-section');
+  projectSections.forEach((section) => {
+    const track = section.querySelector('.slider-track');
+    const prevBtn = section.querySelector('.prev-btn');
+    const nextBtn = section.querySelector('.next-btn');
+
+    if (track && prevBtn && nextBtn) {
+      const scrollAmount = 325; // slide width (310) + gap (15)
+
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+    }
+  });
+
+  // Portfolio Lightbox (works on both .slide and .gallery-card)
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -164,18 +180,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxNext = document.querySelector('.lightbox-next');
 
   let currentImgIndex = 0;
-  const cardsArray = Array.from(galleryCards);
+  const portfolioElements = Array.from(document.querySelectorAll('.slide, .gallery-card'));
 
   function openLightbox(index) {
-    if (!lightboxModal || !lightboxImg || cardsArray.length === 0) return;
+    if (!lightboxModal || !lightboxImg || portfolioElements.length === 0) return;
     currentImgIndex = index;
-    const card = cardsArray[currentImgIndex];
-    const img = card.querySelector('img');
-    const title = card.querySelector('.gallery-info')?.textContent || 'Eco Biodigester Job Done';
+    const item = portfolioElements[currentImgIndex];
+    const img = item.querySelector('img');
+    const title = item.querySelector('.slide-caption, .gallery-info')?.textContent || 'Eco Biodigesters Project';
 
     lightboxImg.src = img.src;
     if (lightboxCaption) {
-      lightboxCaption.textContent = `${title} (${currentImgIndex + 1} of ${cardsArray.length})`;
+      lightboxCaption.textContent = `${title} (${currentImgIndex + 1} of ${portfolioElements.length})`;
     }
     lightboxModal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -187,19 +203,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  galleryCards.forEach((card, idx) => {
-    card.addEventListener('click', () => openLightbox(idx));
+  portfolioElements.forEach((item, idx) => {
+    item.addEventListener('click', () => openLightbox(idx));
   });
 
   lightboxClose?.addEventListener('click', closeLightbox);
   lightboxPrev?.addEventListener('click', (e) => {
     e.stopPropagation();
-    currentImgIndex = (currentImgIndex - 1 + cardsArray.length) % cardsArray.length;
+    currentImgIndex = (currentImgIndex - 1 + portfolioElements.length) % portfolioElements.length;
     openLightbox(currentImgIndex);
   });
   lightboxNext?.addEventListener('click', (e) => {
     e.stopPropagation();
-    currentImgIndex = (currentImgIndex + 1) % cardsArray.length;
+    currentImgIndex = (currentImgIndex + 1) % portfolioElements.length;
     openLightbox(currentImgIndex);
   });
 
